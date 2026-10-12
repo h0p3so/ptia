@@ -113,3 +113,8 @@ La aplicación muestra esta comparación y advierte cuando, para el mes elegido,
 - **Diseño elegido con la misma prueba**: probé tres variantes del Random Forest y me quedé con la de proporciones
   respecto al promedio de 12 meses porque tuvo el menor error. Las métricas de arriba pueden ser algo optimistas.
 - **Datos por ASE**: la predicción es por ASE y no se puede repartir entre localidades sin datos adicionales.
+
+### Links de referencia
+
+- [hitos del proyecto](https://docs.google.com/document/d/1MDbRlEZvyivydtefRr6LbzHpD9ZXfY7HQ0yyruljFV4/edit?usp=sharing)
+- [video demo 1](https://drive.google.com/file/d/1KzPALHJGb1ZFmAYNfTSDoaNz6KCuBrZn/view?usp=sharing)
