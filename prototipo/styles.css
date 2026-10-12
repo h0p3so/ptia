@@ -1,0 +1,198 @@
+/* ============================================================
+   styles.css — Prototipo PTIA Grupo 04
+   Estilo sobrio: pocas reglas, jerarquía clara.
+   ============================================================ */
+
+:root {
+  --tinta: #1c2430;
+  --tenue: #667085;
+  --borde: #dfe3ea;
+  --fondo: #f5f6f8;
+  --papel: #ffffff;
+  --acento: #1f6f4a;
+  --acento-suave: #e8f2ec;
+  --alerta: #b4531f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.contenedor {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  background: var(--papel);
+  border-bottom: 1px solid var(--borde);
+  padding: 28px 0;
+}
+
+.curso {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.cabecera h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.subtitulo {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--tenue);
+}
+
+.principal { padding: 24px 20px 48px; }
+
+/* ---------- Tarjetas ---------- */
+.tarjeta {
+  background: var(--papel);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+}
+
+.tarjeta h2 {
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+
+.tarjeta h3 {
+  margin: 26px 0 10px;
+  font-size: 14px;
+  color: var(--tenue);
+  font-weight: 600;
+}
+
+/* ---------- Formulario ---------- */
+.campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 5px;
+}
+
+select, input[type="number"] {
+  font: inherit;
+  font-weight: 400;
+  padding: 8px 10px;
+  border: 1px solid var(--borde);
+  border-radius: 5px;
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+select:focus, input:focus {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+}
+
+small {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--tenue);
+}
+
+.casilla { justify-content: flex-end; }
+.casilla span { display: flex; align-items: center; gap: 8px; }
+.casilla input { width: 16px; height: 16px; accent-color: var(--acento); }
+
+button {
+  margin-top: 18px;
+  padding: 10px 20px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--acento);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover { background: #185839; }
+
+/* ---------- Resultado ---------- */
+.salida {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  background: var(--acento-suave);
+  border-radius: 6px;
+  padding: 18px 20px;
+}
+
+.cifra { display: flex; flex-direction: column; }
+.numero { font-size: 40px; font-weight: 700; line-height: 1; color: var(--acento); }
+.unidad { font-size: 13px; color: var(--tenue); }
+
+.notas { flex: 1; min-width: 240px; }
+.notas p { margin: 0 0 4px; font-size: 13px; }
+.tenue { color: var(--tenue); }
+.sube { color: var(--alerta); font-weight: 600; }
+.baja { color: var(--acento); font-weight: 600; }
+
+/* ---------- Gráfica ---------- */
+.grafica { width: 100%; overflow-x: auto; }
+.grafica svg { width: 100%; height: auto; display: block; }
+
+.guia { stroke: var(--borde); stroke-width: 1; }
+.eje { font-size: 10px; fill: var(--tenue); }
+.eje.destacado { fill: var(--acento); font-weight: 700; }
+.linea { fill: none; stroke: #4a5b70; stroke-width: 2; }
+.linea-pred { fill: none; stroke: var(--acento); stroke-width: 2; stroke-dasharray: 5 4; }
+.punto { fill: #4a5b70; }
+.punto-pred { fill: var(--acento); stroke: #fff; stroke-width: 2; }
+
+.leyenda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--tenue);
+  margin: 8px 0 0;
+}
+
+.marca { width: 18px; height: 0; border-top-width: 2px; display: inline-block; }
+.marca.real { border-top: 2px solid #4a5b70; }
+.marca.pred { border-top: 2px dashed var(--acento); margin-left: 12px; }
+
+/* ---------- Tabla ---------- */
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--borde); }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--tenue); }
+td:not(:first-child), th:not(:first-child) { text-align: right; }
+tr.activo { background: var(--acento-suave); }
+tr.activo td:first-child { font-weight: 600; color: var(--acento); }
+
+/* ---------- Pie ---------- */
+.aviso {
+  font-size: 12px;
+  color: var(--tenue);
+  max-width: 70ch;
+  margin: 0;
+}

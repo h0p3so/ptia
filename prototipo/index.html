@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predicción de residuos sólidos — Bogotá</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor">
+      <p class="curso">Proyecto PTIA · Grupo 04 · Hito 1</p>
+      <h1>Predicción de generación de residuos sólidos urbanos en Bogotá</h1>
+      <p class="subtitulo">
+        Prototipo de interfaz: se ingresan las variables de una localidad y un periodo,
+        y el sistema devuelve la estimación de toneladas que se generarán en el mes.
+      </p>
+    </div>
+  </header>
+
+  <main class="contenedor principal">
+
+    <!-- ENTRADA -->
+    <section class="tarjeta">
+      <h2>1. Variables de entrada</h2>
+      <form id="formulario">
+        <div class="campos">
+          <label>
+            Localidad
+            <select id="localidad"></select>
+            <small id="info-localidad"></small>
+          </label>
+
+          <label>
+            Mes a predecir
+            <select id="mes"></select>
+            <small>Granularidad mensual (consolidado disponible)</small>
+          </label>
+
+          <label>
+            Año
+            <input type="number" id="anio" value="2026" min="2018" max="2030">
+            <small>Periodo del pronóstico</small>
+          </label>
+
+          <label>
+            Días festivos del mes
+            <input type="number" id="festivos" value="1" min="0" max="6">
+            <small>Aumentan el consumo domiciliario</small>
+          </label>
+
+          <label>
+            Modelo
+            <select id="modelo"></select>
+            <small>Algoritmo usado para la estimación</small>
+          </label>
+
+          <label class="casilla">
+            <span><input type="checkbox" id="lluvia"> Temporada de lluvias</span>
+            <small>Incrementa el peso de los residuos</small>
+          </label>
+        </div>
+
+        <button type="submit">Generar predicción</button>
+      </form>
+    </section>
+
+    <!-- SALIDA -->
+    <section class="tarjeta" id="resultado" hidden>
+      <h2>2. Resultado de la predicción</h2>
+
+      <div class="salida">
+        <div class="cifra">
+          <span class="numero" id="valor-prediccion">—</span>
+          <span class="unidad">toneladas / mes</span>
+        </div>
+        <div class="notas">
+          <p id="rango"></p>
+          <p id="variacion"></p>
+          <p id="detalle-modelo" class="tenue"></p>
+          <p id="operativo" class="tenue"></p>
+        </div>
+      </div>
+
+      <h3>Histórico de los últimos 12 meses y predicción</h3>
+      <div id="grafica" class="grafica"></div>
+      <p class="leyenda">
+        <span class="marca real"></span> Histórico observado
+        <span class="marca pred"></span> Predicción del modelo
+      </p>
+    </section>
+
+    <!-- COMPARACIÓN -->
+    <section class="tarjeta">
+      <h2>3. Comparación de modelos</h2>
+      <p class="tenue">
+        Métricas de error sobre el conjunto de validación. Se resalta el modelo
+        seleccionado en la predicción actual.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Modelo</th><th>MAE (t)</th><th>RMSE (t)</th><th>R²</th></tr>
+        </thead>
+        <tbody id="tabla-modelos"></tbody>
+      </table>
+    </section>
+
+    <p class="aviso">
+      Prototipo de demostración. Los valores se calculan con un modelo sustituto
+      basado en población, generación per cápita y estacionalidad; se reemplazará
+      por el modelo entrenado (SVR / Random Forest) con el consolidado mensual de
+      recolección por localidad.
+    </p>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
